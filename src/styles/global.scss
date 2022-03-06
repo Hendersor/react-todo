@@ -1,5 +1,87 @@
-$base-color: yellowgreen;
+@import "./variables.scss";
 
 body {
-  background-color: $base-color;
+  background-color: $gris-claro;
+}
+
+.firstContainer {
+  border: 1px solid;
+  height: 30vh;
+  background-image: url("https://res.cloudinary.com/dwdz4mn27/image/upload/v1646532900/todo-app-main/images/bg-mobile-dark_t3fctw.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  h1 {
+    font-size: 2.8rem;
+    color: $gris-claro;
+    letter-spacing: 13px;
+    text-align: center;
+  }
+
+  .inputContainer {
+    background-color: $azul-oscuro;
+    height: 30%;
+    width: 90%;
+    border-radius: 5px;
+    align-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .checkbox {
+      border: none;
+      height: 23px;
+      width: 23px;
+      border-radius: 50%;
+      border: 1px solid $gris-oscuro;
+      appearance: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+    }
+
+    .textInput {
+      height: 100%;
+      width: 85%;
+      border: none;
+      outline: none;
+      background-color: $azul-oscuro;
+      padding: 10px;
+      color: $gris-claro;
+      font-size: 1.4rem;
+    }
+  }
+}
+
+.secondContainer {
+  background-color: $negro;
+  height: 70vh;
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  .taskContainer {
+    height: 70%;
+    width: 90%;
+    background-color: $azul-oscuro;
+    border-radius: 5px;
+  }
+
+  .filter {
+    width: 90%;
+    height: 10%;
+    background-color: $azul-oscuro;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    color: $gris-oscuro;
+    padding: 0 50px 0 50px;
+    h1 {
+      cursor: pointer;
+    }
+  }
 }
