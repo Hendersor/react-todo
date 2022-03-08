@@ -68,6 +68,25 @@ body {
     width: 90%;
     background-color: $azul-oscuro;
     border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    // justify-content: space-between;
+
+    .taskList {
+      width: 100%;
+      height: 90%;
+    }
+
+    .todoCounter {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      height: 10%;
+      color: $gris-oscuro;
+      font-size: 1.5rem;
+      padding: 0 25px;
+    }
   }
 
   .filter {
