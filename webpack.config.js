@@ -41,9 +41,9 @@ module.exports = {
       filename: "[name].css",
     }),
   ],
-  devServer: {
-    allowedHosts: path.join(__dirname, "dist"),
-    compress: true,
-    port: 3005,
-  },
+  // devServer: {
+  //   allowedHosts: path.join(__dirname, "dist"),
+  //   compress: true,
+  //   port: 3005,
+  // },
 };
