@@ -1,26 +1,11 @@
 import React from "react";
 import { TodoCounter } from "./TodoCounter.jsx";
 import { TaskList } from "./TaskList";
-const testTask = [
-  // {
-  //   task: "Limpiar",
-  //   completed: false,
-  //   key: Math.random() * 2.5,
-  // },
-  // {
-  //   task: "Hacer tarea",
-  //   completed: false,
-  //   key: Math.random() * 2.5,
-  // },
-  // {
-  //   task: "Comprar las cosas pendientes",
-  //   completed: false,
-  //   key: Math.random() * 2.5,
-  // },
-];
+import { useLocalStorage } from "../hooks/useLocalStorage.js";
+// const testTask = [];
 
 function App() {
-  const [todos, setTodos] = React.useState(testTask);
+  const [todos, saveTodos] = useLocalStorage("TODOS_V1", []);
 
   //We filter the remain tasks
   const completedTodos = todos.filter((todo) => !todo.completed).length;
@@ -34,7 +19,7 @@ function App() {
     } else {
       newTodos[getTaskIndex].completed = true;
     }
-    setTodos(newTodos);
+    saveTodos(newTodos);
   };
 
   //Delete the taks
@@ -42,7 +27,7 @@ function App() {
     const getTaskIndex = todos.findIndex((task) => task.task == text);
     const newTodos = [...todos];
     newTodos.splice(getTaskIndex, 1);
-    setTodos(newTodos);
+    saveTodos(newTodos);
   };
 
   //Add tasks
@@ -55,7 +40,7 @@ function App() {
         completed: false,
         key: Math.random() * 2.5,
       });
-      setTodos(newTodos);
+      saveTodos(newTodos);
       getInput.value = "";
     }
   };
@@ -64,21 +49,8 @@ function App() {
   const clearCompletedTask = () => {
     const newTodo = todos.filter((task) => task.completed == false);
     const newState = [...newTodo];
-    setTodos(newState);
+    saveTodos(newState);
   };
-
-  //Show all the task
-  // const showAllTodos = () => {
-  //   const allTodos = [...allTodos];
-  //   setTodos(setAllTodos);
-  // };
-
-  //Show all the remain task to do
-  // const showRemainTodos = () => {
-  //   const newTodo = todos.filter((task) => task.completed == false);
-  //   const newState = [...newTodo];
-  //   setTodos(newState);
-  // };
 
   return (
     <main>
