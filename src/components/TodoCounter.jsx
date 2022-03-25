@@ -1,11 +1,13 @@
 import React from "react";
 import "./../styles/TodoCounter.scss";
 
-function TodoCounter({ completedTodos }) {
+function TodoCounter(props) {
   return (
     <div className="infoContainer">
-      <p>{completedTodos} items left</p>
-      <p className="clearButton">Clear completed</p>
+      <p>{props.completedTodos} items left</p>
+      <p onClick={props.clearTodos} className="clearButton">
+        Clear completed
+      </p>
     </div>
   );
 }

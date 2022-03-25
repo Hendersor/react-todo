@@ -2,25 +2,26 @@ import React from "react";
 import { TodoCounter } from "./TodoCounter.jsx";
 import { TaskList } from "./TaskList";
 const testTask = [
-  {
-    task: "Limpiar",
-    completed: false,
-    key: Math.random() * 2.5,
-  },
-  {
-    task: "Hacer tarea",
-    completed: false,
-    key: Math.random() * 2.5,
-  },
-  {
-    task: "Comprar las cosas pendientes",
-    completed: false,
-    key: Math.random() * 2.5,
-  },
+  // {
+  //   task: "Limpiar",
+  //   completed: false,
+  //   key: Math.random() * 2.5,
+  // },
+  // {
+  //   task: "Hacer tarea",
+  //   completed: false,
+  //   key: Math.random() * 2.5,
+  // },
+  // {
+  //   task: "Comprar las cosas pendientes",
+  //   completed: false,
+  //   key: Math.random() * 2.5,
+  // },
 ];
 
 function App() {
   const [todos, setTodos] = React.useState(testTask);
+
   //We filter the remain tasks
   const completedTodos = todos.filter((todo) => !todo.completed).length;
 
@@ -28,18 +29,56 @@ function App() {
   const completeTodos = (text) => {
     const getTaskIndex = todos.findIndex((task) => task.task == text);
     const newTodos = [...todos];
-    newTodos[getTaskIndex].completed = true;
+    if (newTodos[getTaskIndex].completed) {
+      newTodos[getTaskIndex].completed = false;
+    } else {
+      newTodos[getTaskIndex].completed = true;
+    }
     setTodos(newTodos);
   };
 
+  //Delete the taks
   const deleteTodos = (text) => {
     const getTaskIndex = todos.findIndex((task) => task.task == text);
     const newTodos = [...todos];
     newTodos.splice(getTaskIndex, 1);
     setTodos(newTodos);
-    console.log(newTodos);
-    console.log(todos);
   };
+
+  //Add tasks
+  const reciveTask = (event) => {
+    if (event.code == "Enter") {
+      const getInput = document.getElementById("input");
+      const newTodos = [...todos];
+      newTodos.push({
+        task: event.target.value,
+        completed: false,
+        key: Math.random() * 2.5,
+      });
+      setTodos(newTodos);
+      getInput.value = "";
+    }
+  };
+
+  // Clear completed task
+  const clearCompletedTask = () => {
+    const newTodo = todos.filter((task) => task.completed == false);
+    const newState = [...newTodo];
+    setTodos(newState);
+  };
+
+  //Show all the task
+  // const showAllTodos = () => {
+  //   const allTodos = [...allTodos];
+  //   setTodos(setAllTodos);
+  // };
+
+  //Show all the remain task to do
+  // const showRemainTodos = () => {
+  //   const newTodo = todos.filter((task) => task.completed == false);
+  //   const newState = [...newTodo];
+  //   setTodos(newState);
+  // };
 
   return (
     <main>
@@ -49,9 +88,11 @@ function App() {
         <div className="inputContainer">
           <input className="checkbox" type="checkbox" />
           <input
+            id="input"
             className="textInput"
             type="text"
             placeholder="Create a new todo..."
+            onKeyDown={reciveTask}
           />
         </div>
       </section>
@@ -71,6 +112,7 @@ function App() {
           <TodoCounter
             className="todoCounter"
             completedTodos={completedTodos}
+            clearTodos={clearCompletedTask}
           />
         </div>
         <div className="filter">

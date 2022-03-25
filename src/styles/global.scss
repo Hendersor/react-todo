@@ -24,6 +24,7 @@ body {
   .inputContainer {
     background-color: $azul-oscuro;
     height: 30%;
+    max-width: 380px;
     width: 90%;
     border-radius: 5px;
     align-self: center;
@@ -55,7 +56,7 @@ body {
 }
 
 .secondContainer {
-  background-color: $negro;
+  background-color: hsl(235, 21%, 11%);
   height: 70vh;
   width: 100%;
   position: relative;
@@ -65,6 +66,7 @@ body {
   align-items: center;
   .taskContainer {
     height: 70%;
+    max-width: 380px;
     width: 90%;
     background-color: $azul-oscuro;
     border-radius: 5px;
@@ -90,6 +92,7 @@ body {
   }
 
   .filter {
+    max-width: 380px;
     width: 90%;
     height: 10%;
     background-color: $azul-oscuro;
