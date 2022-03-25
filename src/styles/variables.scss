@@ -1,0 +1,17 @@
+$gradient: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
+$negro: hsl(235, 21%, 11%);
+$gris-claro: hsl(236, 33%, 92%);
+$azul-oscuro: hsl(235, 24%, 19%);
+$gris-oscuro: hsl(234, 11%, 52%);
+$grismas-oscuro: hsl(233, 14%, 35%);
+$grisaunmas-oscuro: hsl(237, 14%, 26%);
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: "Josefin Sans", sans-serif;
+}
