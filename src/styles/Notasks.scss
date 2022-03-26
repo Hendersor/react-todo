@@ -1,0 +1,9 @@
+@import "./variables.scss";
+.infoContainer {
+  h1 {
+    width: 100%;
+    color: $gris-claro;
+    font-size: 2rem;
+    text-align: center;
+  }
+}
