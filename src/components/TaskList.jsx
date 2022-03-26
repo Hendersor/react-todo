@@ -5,7 +5,10 @@ function TaskList(props) {
   return (
     <section className="taskListContainer">
       <div className="inputTaskContainer">
-        <input onClick={props.onComplete} type="checkbox" />
+        <label className="customCheckbox">
+          <input onClick={props.onComplete} type="checkbox" />
+          <span className="checkmark"></span>
+        </label>
         <p>{props.task}</p>
       </div>
       <img

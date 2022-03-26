@@ -2,6 +2,7 @@ import React from "react";
 import { TodoCounter } from "./TodoCounter.jsx";
 import { TaskList } from "./TaskList";
 import { useLocalStorage } from "../hooks/useLocalStorage.js";
+import { Notasks } from "./Notasks";
 // const testTask = [];
 
 function App() {
@@ -32,15 +33,20 @@ function App() {
 
   //Add tasks
   const reciveTask = (event) => {
-    if (event.code == "Enter") {
+    if (event.code == "Enter" && event.target.value !== "") {
       const getInput = document.getElementById("input");
       const newTodos = [...todos];
-      newTodos.push({
-        task: event.target.value,
-        completed: false,
-        key: Math.random() * 2.5,
-      });
-      saveTodos(newTodos);
+      const dontRepeat = todos.findIndex(
+        (todo) => todo.task == event.target.value
+      );
+      if (dontRepeat === -1) {
+        newTodos.push({
+          task: event.target.value,
+          completed: false,
+          key: Math.random() * 2.5,
+        });
+        saveTodos(newTodos);
+      }
       getInput.value = "";
     }
   };
@@ -58,7 +64,6 @@ function App() {
         <h1>TODO</h1>
 
         <div className="inputContainer">
-          <input className="checkbox" type="checkbox" />
           <input
             id="input"
             className="textInput"
@@ -81,17 +86,21 @@ function App() {
               onDelete={() => deleteTodos(task.task)}
             />
           ))}
-          <TodoCounter
-            className="todoCounter"
-            completedTodos={completedTodos}
-            clearTodos={clearCompletedTask}
-          />
+          {todos.length != 0 ? (
+            <TodoCounter
+              className="todoCounter"
+              completedTodos={completedTodos}
+              clearTodos={clearCompletedTask}
+            />
+          ) : (
+            <Notasks />
+          )}
         </div>
-        <div className="filter">
+        {/* <div className="filter">
           <h1>All</h1>
           <h1>Active</h1>
           <h1>Completed</h1>
-        </div>
+        </div> */}
       </section>
     </main>
   );
